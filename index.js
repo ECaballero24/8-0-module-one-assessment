@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -28,7 +29,14 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  let newMovieArr = [];
+    for(let i = 0; i < movies.length; i++){
+      newMovieArr.push(movies[i].title);
+    }
+    return newMovieArr;
+}
+console.log(getAllMovieTitles(exampleMovies));
 
 /**
  * getHighestMetascore()
@@ -41,8 +49,17 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
-
+function getHighestMetascore(movies) {
+  let highestMetaArr = 0;
+  
+  for(let i = 0; i < movies.length;i++){
+      if(movies[i].metascore > highestMetaArr){
+        highestMetaArr = Number(movies[i].metascore)
+      }
+  }
+    return highestMetaArr;
+}
+console.log(getHighestMetascore(exampleMovies));
 /**
  * getAverageIMDBRating()
  * -----------------------------
@@ -54,7 +71,21 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+  if(!movies.length){
+    return 0;
+  }
+  let total = 0;
+
+  for(let i = 0; i < movies.length;i++){
+    total += Number(movies[i].imdbRating);
+  }
+    return total/ movies.length;
+}
+
+
+
+console.log(getAverageIMDBRating(exampleMovies));
 
 /**
  * countByRating()
@@ -67,8 +98,19 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  let newObj = {};
 
+  for(let i = 0; i < movies.length;i++){
+      if(!newObj[movies[i].rated]){
+        newObj[movies[i].rated] = 1;
+      }else{
+        newObj[movies[i].rated] += 1;
+      }
+  }
+      return newObj;
+}
+console.log(countByRating(exampleMovies));
 /**
  * findById()
  * -----------------------------
@@ -83,7 +125,9 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+
+}
 
 /**
  * filterByGenre()
@@ -105,7 +149,9 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
