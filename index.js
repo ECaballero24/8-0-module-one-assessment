@@ -126,9 +126,17 @@ console.log(countByRating(exampleMovies));
     };
  */
 function findById(movies, id) {
-
+  if(movies.length === 0){
+    return null;
+  }
+  for(let i = 0; i< movies.length;i++){
+    if(movies[i].imdbID === id){
+      return movies[i];
+    }
+  }
+    return null;
 }
-
+console.log(countByRating(exampleMovies));
 /**
  * filterByGenre()
  * -----------------------------
