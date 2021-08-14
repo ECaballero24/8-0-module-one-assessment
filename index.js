@@ -158,8 +158,16 @@ console.log(countByRating(exampleMovies));
  *  //> []
  */
 function filterByGenre(movies, genre) {
+  let newGenreArr = []
 
+  for(let i = 0; i< movies.length;i ++){
+      if(movies[i].genre.includes(genre)){
+        newGenreArr.push(movies[i].genre);
+      }
+  }
+      return newGenreArr;
 }
+console.log(filterByGenre(exampleMovies));
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -196,7 +204,31 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+let bigBoxOff = movies[0];
+
+for(let i = 1; i < movies.length;i++){
+  if(Number(movies[i].boxOffice) > Number(bigBoxOff.boxOffice)){
+    bigBoxOff = movies[i];
+  }
+}
+    return bigBoxOff.title;
+
+  // let topTicketNum = Number(movies[0].boxOffice);
+  // let topTicketMov = '';
+
+  //   for(let i = 0; i < movies.length;i++){
+  //       if(Number(movies[i].boxOffice) > topTicketNum){
+  //         topTicketNum = Number(movies[i].boxOffice);
+  //         topTicketMov = movies[i].title;
+  //       }
+    // }
+    // return topTicketMov;
+
+}
+console.log(getBiggestBoxOfficeMovie(exampleMovies));
+
+
 
 // Do not change anything below this line.
 module.exports = {
